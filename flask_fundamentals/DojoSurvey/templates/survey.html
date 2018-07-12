@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Survey</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='survey.css') }}">
+</head>
+<body>
+    <h3>Dojo Survey</h3>
+    <form action='/results' method='post'>
+        Your Name: <input type='text' name='name'>
+        <br><br>
+            <!-- {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        {{message}}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %} -->
+        <br><br>
+        Dojo Location: 
+        <select name="location">
+            <option value="chicago">Chicago</option>
+            <option value="seattle">Seattle</option>
+            <option value="san fransisco">San Fransisco</option>
+            <option value="new york">New York</option>
+        </select>
+        <br><br>
+        Favorite Language:
+        <select name="language">
+            <option value="python">Python</option>
+            <option value="mean">Mean</option>
+            <option value="c#">C#</option>
+            <option value="php">PHP</option>
+        </select>
+        <br><br>
+        <!-- {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                "{{category}}">{{message}}
+            {% endfor %}
+        {% endif %}
+    {% endwith %} -->
+        <p>Comment(optional):</p> 
+        <textarea id="commentarea" name="comment" rows="10" cols="50" maxlength="500" placeholder="500 char max"></textarea>
+        <input type='submit' value='Button'>
+    </form>
+    <br><br>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {{message}}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+
+    <h1>Are you sure you want to delete the following course?</h1>
+    <p>Name: {{course.name}}</p>
+    <p>Description: {{course.description}}</p>
+    <!-- <form action='/courses/' method='post'>
+    {% csrf_token %}
+    <input type="submit" value="No">
+    </form><br>
+    <form action='/courses/{{course.id}}/delete' method='post'>
+    {% csrf_token %}
+    <input type="submit" value="Yes! I want to delete this">
+    </form><br> -->
+    <button > <a href="/courses/"> NO </a> </button>
+    <button> <a href="/courses/{{course.id}}/delete"> Yes! I want to delete this! </a> </button>
+
+{% endblock%} 

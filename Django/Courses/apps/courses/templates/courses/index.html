@@ -1,0 +1,100 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+  
+<h2>Add a new course</h2>
+{% if messages %}
+		{% for message in messages %}
+			<h4>{{ message }}</h4>
+		{% endfor %}
+    {% endif %}
+<form action="/courses/create" method="POST">
+    {% csrf_token %}
+    Name:<input type="text" name="name"><br><br>
+    Description: <textarea name="description" placeholder="Describe your course" id="" cols="30" rows="3"></textarea><br><br>
+    <input type="submit" id="add" value="Add">
+</form><br><br>
+
+<h2>All Courses</h2>
+<table>
+    <th>
+        <tr>
+            <td>Course Name</td>
+            <td>Description</td>
+            <td>Date Added</td>
+            <td>Creator</td>
+            <td>Actions</td>
+        </tr>
+    </th>
+    {% for course in courses %}
+        <tr>
+            <td>{{course.name}}</td>
+            <td>{{course.description}}</td>
+            <td>{{course.date_added}}</td>
+            <td>{{course.creator.first_name}} {{course.creator.last_name}}</td>
+            <td>
+                <a href="{{course.id}}/edit"> Remove Course </a>
+                <a href="{{course.id}}/change"> Update </a>                
+                <!-- <form action="{{course.id}}/edit" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Remove Course">
+                </form> -->
+                {% if course in current_user.Courses_joined.all %}
+                <a href="{{course.id}}/dropped"> Drop </a> 
+                <!-- <form action="{{course.id}}/dropped" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Drop">
+                </form> -->
+                {% else %}               
+                <a href="{{course.id}}/joined"> Join </a>
+                <!-- <form action="{{course.id}}/joined" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" Value="Join">
+                </form> -->
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table><br>
+
+<h2>Courses enrolled in</h2>
+<table>
+    <th>
+        <tr>
+            <td>id</td>
+            <td>Course Name</td>
+            <td>Description</td>
+            <td>Date Added</td>
+            <td>Creator</td>
+            <td>Actions</td>
+        </tr>
+        
+    </th>
+
+    {% for course in current_user.Courses_joined.all %}
+        <tr>
+            <td>{{course.id}}</td>
+            <td>{{course.name}}</td>
+            <td>{{course.description}}</td>
+            <td>{{course.date_added}}</td>
+            <td>{{course.creator.first_name}} {{course.creator.last_name}}</td>            
+            <td>
+                <a href="{{course.id}}/edit">Remove Course</a>
+                <!-- <form action="{{course.id}}/edit" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Remove Course">
+                </form> -->
+                <a href="{{course.id}}/dropped"> Drop </a>                                
+                <!-- <form action="{{course.id}}/dropped" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Drop">
+                </form> -->
+            </td>
+        </tr>
+        
+    {% endfor %}
+</table><br>
+<button> <a href="/logout">Log out</a> </button>
+
+
+{% endblock%}

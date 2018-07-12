@@ -1,0 +1,36 @@
+#wrapper{
+    margin: 0px auto;
+    height: 1000px;
+    width: 1000px;
+    background-color:blanchedalmond;
+    text-align: center;
+}
+
+#display{
+    height: 100%;
+    vertical-align: top;
+    background-color:pink;
+    width: 450px;
+    display: inline-block;
+    vertical-align: top;
+}
+#display2{
+    height: 100%;
+    width: 450px;
+    /* background-color: orangered; */
+    display: inline-block;
+    /* position: relative; */
+    /* bottom: 300px; */
+    /* margin-left: 300px; */
+    /* border-left: 4px solid black; */
+}
+.red{
+    color: red;
+}
+.green{
+    color:green;
+}
+.blue{
+    color:blue;
+}
+

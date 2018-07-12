@@ -1,0 +1,11 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+    <div class="login">
+        <h2>{{users.first_name}}</h2>
+        <p>{{users.last_name}}</p>
+        <p>{{users.age}}</p>
+        <p>{{users.created_at}}</p>
+        <p>{{users.updated_at}}</p>
+    </div>
+{% endblock%}

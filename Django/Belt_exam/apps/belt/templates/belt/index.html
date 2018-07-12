@@ -1,0 +1,108 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+<a href="/logout">Log out</a>
+<h2>Hello {{current_user.first_name}}</h2>
+{% if messages %}
+		{% for message in messages %}
+			<h4>{{ message }}</h4>
+		{% endfor %}
+    {% endif %}
+
+<h2>Your Trip Schedules</h2>
+<table>
+    <th>
+        <tr>
+            <td>Destination</td>
+            <td>Trip Creator</td>
+            <td>Travel Start Date</td>
+            <td>Travel End Date</td>
+            <td>Plan</td>
+            <td>Actions</td>
+        </tr>
+        
+    </th>
+    {% for trip in my_trips  %}
+        <tr>
+            <td><a href="/belt/{{trip.id}}/show">{{trip.destination}}</a></td>
+            <td>{{trip.creator.first_name}} {{trip.creator.last_name}}</td>            
+            <td>{{trip.travel_start_date}}</td>
+            <td>{{trip.travel_end_date}}</td>
+            <td>{{trip.description}}</td>
+            <td>
+                <!-- <a href="{{trip.id}}/edit">Remove Course</a>  -->
+                <form action="{{trip.id}}/edit" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Remove Trip">
+                </form>
+                <!-- <a href="{{trip.id}}/dropped"> Drop </a>                      -->
+                <!-- <form action="{{trip.id}}/dropped" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Drop Trip">
+                </form> -->
+            </td>
+        </tr>  
+    {% endfor %}
+    {% for trip in current_user.Trips_joined.all  %}
+        <tr>
+            <td><a href="/belt/{{trip.id}}/show">{{trip.destination}}</a></td>
+            <td>{{trip.creator.first_name}} {{trip.creator.last_name}}</td>            
+            <td>{{trip.travel_start_date}}</td>
+            <td>{{trip.travel_end_date}}</td>
+            <td>{{trip.description}}</td>
+            <td>
+                <!-- <a href="{{trip.id}}/edit">Remove Course</a> -->
+                <form action="{{trip.id}}/edit" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Remove Trip">
+                </form>
+                <!-- <a href="{{trip.id}}/dropped"> Drop </a>                            -->
+                <form action="{{trip.id}}/dropped" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Drop Trip">
+                </form>
+            </td>
+        </tr>  
+    {% endfor %}
+
+</table><br>
+
+<h2>Other Users' Travel Plans</h2>
+<table>
+    <th>
+        <tr>
+            <td>Creator Name</td>
+            <td>Destination</td>
+            <td>Travel Start Date</td>
+            <td>Travel End Date</td>
+            <td>Do You Want To Join?</td>
+        </tr>
+    </th>
+    {% for trip in others_trips %}
+        <tr>
+            <td>{{trip.creator.first_name}} {{trip.creator.last_name}}</td>
+            <td><a href="/belt/{{trip.id}}/show">{{trip.destination}}</a></td>
+            <td>{{trip.travel_start_date}}</td>
+            <td>{{trip.travel_end_date}}</td>
+            <td>
+              
+                {% if trip in current_user.Trips_joined.all %}
+                <!-- <a href="{{course.id}}/dropped"> Drop </a>  -->
+                <form action="{{trip.id}}/dropped" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Drop">
+                </form>
+                {% else %}               
+                <!-- <a href="{{course.id}}/joined"> Join </a> -->
+                <form action="{{trip.id}}/joined" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" Value="Join">
+                </form>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table><br>
+<a href="new">Add Travel Plan</a>
+
+{% endblock%}

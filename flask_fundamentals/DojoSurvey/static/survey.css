@@ -1,0 +1,15 @@
+h3{
+    color: aqua;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+}
+form{
+    display: inline-block;
+    width: 600px;
+}
+input {
+    display: inline-block;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    width: 600px;
+}

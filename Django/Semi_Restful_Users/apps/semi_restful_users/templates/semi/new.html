@@ -1,0 +1,18 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+{% if messages %}
+		{% for item in messages %}
+			<p>{{ item.message }}</p>
+		{% endfor %}
+{% endif %}
+    <h2>Add a new user</h2>
+    <form action="/create" method="POST">
+        {% csrf_token %}
+        First Name: <br><input type="text" name="first_name" placeholder="first_name"> <br><br>
+        Last Name: <br><input type="text" name="last_name" placeholder="last_name"> <br><br>
+        Email: <br><input type="text" name="email" placeholder="email"><br><br>
+        <input type="submit" value="Create"><br><br>
+        <a href="/">Go Back</a>
+    </form>
+{% endblock%}

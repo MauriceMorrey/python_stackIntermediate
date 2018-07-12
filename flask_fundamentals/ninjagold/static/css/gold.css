@@ -1,0 +1,45 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+#container {
+	width: 1200px;
+	height: 700px;
+}
+
+.boxes{
+	width: 250px;
+	height: 250px;
+	border: 2px solid black;
+	display:inline-block;
+	margin: 20px;
+	margin-top: 30px;
+}
+
+#activities{
+	width: 1100px;
+	height: 150px;
+	border: 2px solid black;
+	margin: 0px auto;
+	margin-top: 10px;
+	overflow: scroll;
+}
+
+h1, h2{
+	padding-top: 20px;
+	text-align: center;
+}
+
+h2, h3, button{
+	margin:20px;
+}
+
+.boxes p {
+	text-align: center;
+}
+
+input{
+	margin-left: 100px;
+	margin-top: 20px;
+}

@@ -1,0 +1,19 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+{% if messages %}
+		{% for item in messages %}
+			<p>{{ item.message }}</p>
+		{% endfor %}
+{% endif %}
+    <h2>Add a new destination</h2>
+    <form action="/belt/create" method="POST">
+        {% csrf_token %}
+        Destination: <br><input type="text" name="destination" placeholder="destination"> <br><br>
+        Description: <br><textarea rows="4" cols="50" name="description" placeholder="description"></textarea> <br><br>
+        Trave Date From: <input type="date" name="travel_start_date" min="2018-04-20"><br><br>
+        Travel Date To: <input type="date" name="travel_end_date" min="2018-04-20"><br><br>
+        <input type="submit" value="Add"><br><br>
+        <a href="/belt/"> Home </a> | <a href="/logout">Log Out</a>
+    </form>
+{% endblock%}

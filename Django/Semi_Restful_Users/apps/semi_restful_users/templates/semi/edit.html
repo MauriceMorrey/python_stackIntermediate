@@ -1,0 +1,18 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+{% if messages %}
+		{% for message in messages %}
+			<p>{{ message }}</p>
+		{% endfor %}
+{% endif %}
+    <h2>Edit User {{user.id}}</h2>
+    <form action="/{{user.id}}/update" method="POST">
+        {% csrf_token %}
+        First Name: <br><input type="text" name="first_name" placeholder="{{user.first_name}}"><br><br>
+        Last Name: <br><input type="text" name="last_name" placeholder="{{user.last_name}}"><br><br>
+        Email: <br><input type="text" name="email" placeholder="{{user.email}}"><br><br>
+        <input type="submit" value="Update"><br><br>
+        <a href="/{{user.id}}/show">Show</a> | <a href="/">Go Back</a>
+    </form>
+{% endblock%}

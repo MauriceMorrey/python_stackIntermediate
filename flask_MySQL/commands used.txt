@@ -1,0 +1,17 @@
+SELECT id, first_name FROM users LIMIT 1,2;
+
+
+
+SELECT first_name,tweet
+FROM users
+LEFT JOIN faves 
+ON users.id = faves.user_id
+LEFT JOIN tweets 
+ON faves.tweet_id = tweets.id
+WHERE users.id = 1 OR users.id = 2;
+
+
+
+select tweet as kebi_tweets from users left join tweets on users.id = tweets.user_id where users.id=1
+
+

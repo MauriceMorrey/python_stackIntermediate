@@ -1,0 +1,25 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+<div id="header">
+    <h5>Thanks for submitting this form! You have submitted this form {{request.session.count}} time(s) now.</h5>    
+</div>
+<div id="submitted_info">
+    <h2>Submitted Information</h2>
+    <h5>Name: {{request.session.name}}</h5>
+    <h5>Dojo Location: {{request.session.location}}</h5>
+    <h5>Favorite Language: {{request.session.language}}!!</h5>
+    <h5>Comment: {{request.session.comment}}</h5>
+    <form action="/" method="get">
+        {% csrf_token %}
+        <input type="submit" value="Go Back">
+    </form><br><br>
+    <form action='/surveys/reset' method='post'>
+        {% csrf_token %}
+        <input type='hidden' name='count'> 
+        <input type='submit' value='Reset'>
+    </form>
+</div>
+        
+
+{% endblock%}

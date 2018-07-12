@@ -1,0 +1,27 @@
+h2{
+    color: blue;
+    font-weight: bolder;
+}
+h4{
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    color: rebeccapurple;
+}
+p{
+    color: red;
+    font-style: italic;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+h3{
+    color: green;
+    font-weight: bold;
+}
+form{
+    color: dodgerblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+}
+img{
+    width: 120px;
+    height: 120px;
+}

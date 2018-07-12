@@ -1,0 +1,30 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+
+<div id="survey">
+    <form action="/surveys/process" method = 'post'>
+        {% csrf_token %}
+        Your Name:<input type="text" name="name">
+        Dojo Location:
+        <select name="location">
+            <option value="chicago">Chicago</option>
+            <option value="san fransisco">San Fransisco</option>
+            <option value="seattle">Seattle</option>
+            <option value="new york">New York</option>
+        </select>
+        <br><br>
+        Favorite Language:
+        <select name="language">
+            <option value="python">Python</option>
+            <option value="mean">Mean</option>
+            <option value="c#">C#</option>
+            <option value="php">PHP</option>
+        </select>
+        <br><br>
+        <p>Comment(optional):</p> 
+        <textarea id="commentarea" name="comment" rows="10" cols="50" maxlength="500" placeholder="500 char max"></textarea>
+        <input type='submit' value='Submit'>
+    </form>
+</div>
+{% endblock%}

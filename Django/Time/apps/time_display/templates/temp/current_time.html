@@ -1,0 +1,13 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+    <div id="header">
+        <p>The current time and date</p>
+    </div>
+    <div class="display">
+        <h2>Greenwich meantime: {{gmdate}}</h2>
+        <h2>Greenwich meantime: {{gmtime}}</h2>
+        <h2>Local time: {{lcdate}}</h2>
+        <h2>Local time: {{lctime}}</h2>
+    </div>
+{% endblock%}

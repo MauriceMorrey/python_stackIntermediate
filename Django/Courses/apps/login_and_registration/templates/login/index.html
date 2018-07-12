@@ -1,0 +1,62 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+{% if messages %}
+{% for message in messages %}
+<h4>{{ message }}</h4>
+{% endfor %}
+{% endif %}
+<div class="container">
+    <div id="register">
+            <h2>Registration</h2>
+            <form action="/register" class="col s12" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="input-field col s6">
+                        First Name: <input type="text" name="first_name" placeholder="first_name"><br><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        Last Name: <input type="text" name="last_name" placeholder="last_name"><br><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        Email: <input type="text" name="email" placeholder="email"><br><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        Password: <input type="password" name="password" placeholder="password"><br><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        Confirm pw: <input type="password" name="password_confirmation" placeholder="password_confirmation"><br><br> 
+                    </div>
+                </div>
+                <input class="but" type="submit" value="Register"><br><br>
+            </form>
+        </div>
+        <div id="login">
+            <h2>Login</h2>
+            <form class="container" action="/login" method="POST">
+                {% csrf_token %} 
+                <div class="row">
+                    <div class="input-field col s12">
+                        Email: <input type="text" name="email" placeholder="email"><br><br>
+                    </div>
+                </div>   
+                <div class="row">
+                    <div class="input-field col s12">
+                        Password: <input type="password" name="password" placeholder="password"><br><br>
+                    </div>
+                </div>    
+                <input class="but" type="submit" value="Login"><br><br>             
+            </form>
+        </div>
+    </div>
+    
+    
+{% endblock%}

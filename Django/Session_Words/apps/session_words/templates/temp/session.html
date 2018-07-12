@@ -1,0 +1,31 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+
+    <div class="display">
+        <form action="/session_words/add" method = "POST">
+            {% csrf_token %}
+            <h2>Add a new word</h2>
+            <input type="text" name="new_word">
+            <h6>Choose Colour</h6>
+            <input type="radio" name="color" value="red" checked> Red<br>
+            <input type="radio" name="color" value="green"> Green<br>
+            <input type="radio" name="color" value="blue"> Blue <br><br>
+            <input type="checkbox" name="fonts" value="big">Show in BIG fonts! <br>
+            <br>
+            <!-- <input type="checkbox" name="fonts" value="fonts"> show in BIG fonts!<br><br> -->
+            <input type="submit" value="add to a Session"><br><br>
+        </form>
+    </div>
+    <div id="display2">
+        <form action="/session_words/clear" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Clear Session">
+        </form><br><br>
+        {% for item in request.session.new_word %}
+            <strong class="{{item.fonts}} {{item.color}}">{{item.new_word}}</strong>
+            <strong>added on {{item.time}}</strong>
+        {% endfor %}
+    </div>
+
+{% endblock%}

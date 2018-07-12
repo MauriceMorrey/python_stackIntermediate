@@ -1,0 +1,19 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+
+    <h1>Are you sure you want to delete the following trip?</h1>
+    <p>Destination: {{trip.destination}}</p>
+    <p>Description: {{trip.description}}</p>
+    <form action='/belt/' method='post'>
+    {% csrf_token %}
+    <input type="submit" value="No">
+    </form><br>
+    <form action='/belt/{{trip.id}}/delete' method='post'>
+    {% csrf_token %}
+    <input type="submit" value="Yes! I want to delete this trip!">
+    </form><br>
+    <!-- <button > <a href="/belt/"> NO </a> </button>
+    <button> <a href="/belt/{{trip.id}}/delete"> Yes! I want to delete this trip! </a> </button> -->
+
+{% endblock%} 

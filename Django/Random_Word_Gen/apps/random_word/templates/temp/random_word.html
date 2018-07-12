@@ -1,0 +1,25 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+    <div id="header">
+        <h4>Random Word (attempt #{{count}}) </h4>
+    </div>
+    <div class="display">
+        <h1>{{random_word}}</h1>
+        <!-- <input type="button" onclick="/random_word/generate" value="Generate" /> -->
+        <!-- <button>
+            <a href="/random_word/generate">Generate</a>
+        </button> -->
+        <form action='/random_word/generate' method='post'>
+            {% csrf_token %}
+            <input type='hidden' name='count'> 
+            <input type='submit' value='Generate'>
+        </form>
+        <br><br>
+        <form action='/random_word/reset' method='post'>
+            {% csrf_token %}
+            <input type='hidden' name='count'> 
+            <input type='submit' value='Reset'>
+        </form>
+    </div>
+{% endblock%}

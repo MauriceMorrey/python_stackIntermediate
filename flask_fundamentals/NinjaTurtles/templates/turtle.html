@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Turtle color</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/turtles.css') }}">
+</head>
+<body>
+    {% if color == 'blue': %}
+        {% set ninja_turtle = 'Leonardo' %}
+        <h4>This is LEONARDO</h4>
+        <img src="{{ url_for('static', filename='img/leonardo.jpg') }}">
+    {% elif color == 'orange': %}
+        {% set ninja_turtle = 'Michelangelo' %}
+        <h4>This is MICHELANGELO</h4>
+        <img src="{{ url_for('static', filename='img/michelangelo.jpg') }}">
+    {% elif color == 'red': %}
+        {% set ninja_turtle = 'Raphael' %}
+        <h4>This is RAPHAEL</h4>
+        <img src="{{ url_for('static', filename='img/raphael.jpg') }}">
+    {% elif color == 'purple': %}
+        {% set ninja_turtle = 'Donatello' %}
+        <h4>This is DONATELLO</h4>
+        <img src="{{ url_for('static', filename='img/donatello.jpg') }}">
+    {% else %}
+        {% set ninja_turtle = 'Nice try! Not a Ninja!' %}
+        <h4>Nice try! Not a Ninja!</h4>
+        <img src="{{ url_for('static', filename='img/notapril.jpg') }}">
+    {% endif %}
+</body>
+</html>

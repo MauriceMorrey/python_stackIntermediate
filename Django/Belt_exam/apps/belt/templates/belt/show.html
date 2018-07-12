@@ -1,0 +1,18 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+
+    <a href="/belt/"> Home </a> | <a href="/logout">Log out</a>
+    <h2> {{trip.destination}}</h2>
+    <p>Planned By: {{trip.creator.first_name}} {{trip.creator.last_name}}</p>
+    <p>Travel Date From: {{trip.travel_start_date}}</p>
+    <p>Travel Date From: {{trip.travel_end_date}}</p>
+    <br>
+    <br> 
+    <br>
+    <h2>Other Users Joining This Trip</h2>
+    {% for traveler in travelers %}
+    <p>{{traveler.first_name}} {{traveler.last_name}}</p>
+    {% endfor %}
+    
+{% endblock%}
